@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد مدیریت انبار</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>StoreTrack</h3>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="#" class="nav-link active" data-target="products-view">📊 <span>مدیریت کالا</span></a></li>
+                <li><a href="#" class="nav-link" data-target="orders-view">🛒 <span>مدیریت سفارشات</span></a></li>
+                <li><a href="#" class="nav-link" data-target="reports-view">📈 <span>گزارشات</span></a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="dark-mode-toggle">
+                    <span>حالت تاریک</span>
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode-checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1 id="main-title">مدیریت کالا</h1>
+                <div id="notification-icon-container">
+                    <span id="notification-badge">0</span>
+                    <span id="notification-bell">🔔</span>
+                </div>
+            </header>
+
+            <section id="products-view" class="content-section active">
+                <div class="card">
+                    <h3 class="card-header">افزودن کالای جدید</h3>
+                    <form id="add-product-form" class="card-body">
+                        <input type="text" id="product-name" placeholder="نام کالا" required>
+                        <input type="number" id="product-stock" placeholder="موجودی" required>
+                        <input type="number" id="product-price" placeholder="قیمت" required>
+                        <input type="text" id="product-category" placeholder="دسته بندی" required>
+                        <button type="submit">افزودن کالا</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3 class="card-header">لیست کالاها</h3>
+                    <div class="filters card-body">
+                        <input type="text" id="filter-product-name" placeholder="جستجوی نام کالا...">
+                        <input type="text" id="filter-product-category" placeholder="فیلتر دسته‌بندی...">
+                    </div>
+                    <div class="table-container">
+                        <table id="products-table">
+                            <thead>
+                                <tr>
+                                    <th>نام کالا</th>
+                                    <th>موجودی</th>
+                                    <th>قیمت</th>
+                                    <th>دسته بندی</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="orders-view" class="content-section">
+                <div class="card">
+                    <h3 class="card-header">ثبت سفارش جدید</h3>
+                    <form id="create-order-form" class="card-body">
+                        <select id="order-product-id" required></select>
+                        <input type="number" id="order-quantity" placeholder="تعداد" required min="1">
+                        <button type="submit">ثبت سفارش</button>
+                    </form>
+                </div>
+                 <div class="card">
+                    <h3 class="card-header">لیست سفارشات</h3>
+                    <div class="filters card-body">
+                        <input type="text" id="filter-order-product" placeholder="جستجوی نام کالا...">
+                        <select id="filter-order-status">
+                            <option value="">همه وضعیت‌ها</option>
+                            <option value="در انتظار">در انتظار</option>
+                            <option value="ارسال شده">ارسال شده</option>
+                            <option value="لغو شده">لغو شده</option>
+                        </select>
+                    </div>
+                    <div class="table-container">
+                        <table id="orders-table">
+                            <thead><tr><th>کالا</th><th>تعداد</th><th>مبلغ کل</th><th>تاریخ سفارش</th><th>وضعیت</th><th>عملیات</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="reports-view" class="content-section">
+                 <div class="card">
+                    <h3 class="card-header">ایجاد گزارش</h3>
+                    <div class="card-body report-buttons">
+                        <button id="sales-report-btn">نمایش گزارش فروش</button>
+                        <button id="low-stock-report-btn">گزارش کالاهای کم موجودی</button>
+                    </div>
+                    <div id="report-results" class="card-body"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="notification-area"></div>
+
+    <div id="notification-center-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>مرکز اطلاعیه‌ها</h2>
+                <button class="close-modal-btn" data-target="notification-center-overlay">&times;</button>
+            </div>
+            <ul id="notification-list"></ul>
+        </div>
+    </div>
+
+    <div id="history-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="history-modal-title">تاریخچه کالا</h2>
+                <button class="close-modal-btn" data-target="history-modal-overlay">&times;</button>
+            </div>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
