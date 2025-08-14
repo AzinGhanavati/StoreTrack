@@ -1,0 +1,324 @@
+/* --- Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+    --primary-color: #4a90e2;
+    --primary-color-dark: #357ABD;
+    --bg-color: #f4f7f6;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-color-light: #777777;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --success-color: #5cb85c;
+    --danger-color: #d9534f;
+    --font-family: 'Vazirmatn', sans-serif;
+}
+
+body.dark-mode {
+    --primary-color: #4a90e2;
+    --primary-color-dark: #5a9ee9;
+    --bg-color: #1a1a1a;
+    --sidebar-bg: #252525;
+    --card-bg: #2c2c2c;
+    --text-color: #e0e0e0;
+    --text-color-light: #999999;
+    --border-color: #444444;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 240px;
+    background-color: var(--sidebar-bg);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+}
+
+.sidebar-header {
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-links {
+    list-style: none;
+    flex-grow: 1;
+    margin-top: 20px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s, color 0.2s;
+}
+.nav-link span {
+    margin-right: 10px;
+}
+.nav-link:hover {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 500;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Dark Mode Toggle Switch --- */
+.dark-mode-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 26px; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--primary-color); }
+input:checked + .slider:before { transform: translateX(24px); }
+
+/* --- Main Content --- */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#main-title {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.content-section {
+    display: none;
+}
+.content-section.active {
+    display: block;
+}
+
+/* --- Cards --- */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 20px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* --- Forms & Inputs --- */
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    align-items: center;
+}
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* --- Buttons --- */
+button {
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: var(--primary-color);
+    color: white;
+}
+button:hover {
+    background-color: var(--primary-color-dark);
+}
+.report-buttons button {
+    margin-left: 10px;
+}
+
+td button.success {
+    background-color: var(--success-color);
+}
+td button[title] {
+    font-size: 16px;
+    padding: 8px 12px;
+}
+
+/* --- Tables --- */
+.table-container {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+}
+thead {
+    background-color: var(--bg-color);
+}
+td button {
+    padding: 6px 10px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* --- Notifications & Modals (Re-styled) --- */
+#notification-icon-container, #history-list li, .modal-header, .notification {
+    transition: all 0.3s;
+}
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    display: none; justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: var(--card-bg);
+    width: 90%; max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px; border-bottom: 1px solid var(--border-color);
+}
+.close-modal-btn {
+    background: none; border: none; font-size: 28px; cursor: pointer; color: var(--text-color-light);
+}
+#notification-list, #history-list {
+    list-style: none; padding: 10px 0; max-height: 60vh; overflow-y: auto;
+}
+#notification-list li, #history-list li {
+    padding: 15px; border-bottom: 1px solid var(--border-color);
+}
+#notification-list li.unread { background-color: var(--primary-color); color: white; }
+
+
+#notification-area {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 3000; /* بالاترین لایه برای نمایش روی همه چیز */
+    width: 300px;
+}
+
+.notification {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 14px;
+    opacity: 0.9;
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0.9;
+    }
+}
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        border-bottom: 1px solid var(--border-color);
+        border-left: none;
+    }
+    .sidebar-header {
+        display: none;
+    }
+    .sidebar-links {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        margin: 0;
+    }
+    .nav-link span {
+        display: none;
+    }
+    .nav-link {
+        padding: 15px;
+        font-size: 24px;
+    }
+    .sidebar-footer {
+        border-top: none;
+        border-right: 1px solid var(--border-color);
+    }
+    .main-content {
+        padding: 15px;
+    }
+}
