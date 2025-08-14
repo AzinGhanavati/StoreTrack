@@ -73,21 +73,6 @@ exports.getOrders = async (req, res) => {
     }
 };
 
-// exports.getOrders = async (req, res) => {
-//     try {
-//         let query;
-//         let queryStr = JSON.stringify(req.query);
-//         queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
-        
-//         query = Order.find(JSON.parse(queryStr)).populate('product', 'name category');
-
-//         const orders = await query;
-//         res.status(200).json({ success: true, count: orders.length, data: orders });
-//     } catch (err) {
-//         res.status(400).json({ success: false, error: err.message });
-//     }
-// };
-
 // تغییر وضعیت سفارش
 
 exports.updateOrderStatus = async (req, res) => {
@@ -176,3 +161,4 @@ exports.getSalesReport = async (req, res) => {
 //         res.status(400).json({ success: false, error: err.message });
 //     }
 // };
+
