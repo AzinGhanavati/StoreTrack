@@ -139,4 +139,4 @@ inventory-management/
 
 # 📌 GitHub link
 
-[مشاهده پروژه در GitHub](https://github.com/AzinGhanavati/StoreTrack#)
+[ GitHub link](https://github.com/AzinGhanavati/StoreTrack#)
