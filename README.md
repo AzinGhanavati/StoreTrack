@@ -132,3 +132,11 @@ inventory-management/
 ├── .gitignore
 └── README.md                   # This file
 ```
+
+##  Project Screenshuts
+![عکس اول](images/1.jpeg)
+![عکس دوم](images/2.jpeg)
+
+# 📌 GitHub link
+
+[مشاهده پروژه در GitHub](https://github.com/AzinGhanavati/StoreTrack#)
