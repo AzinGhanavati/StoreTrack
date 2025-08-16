@@ -134,8 +134,6 @@ inventory-management/
 ```
 
 ##  Project Screenshuts
-![عکس اول](images/1.jpeg)
-![عکس دوم](images/2.jpeg)
 ![عکس سوم](images/3.jpeg)
 ![عکس چهارم](images/4.jpeg)
 
