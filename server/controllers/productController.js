@@ -69,7 +69,7 @@ exports.checkLowStock = async () => {
         if (lowStockProducts.length > 0) {
             console.log("هشدار: کالاهای زیر موجودی کمی دارند:");
             lowStockProducts.forEach(p => console.log(`- ${p.name} (موجودی: ${p.stock})`));
-            // اینجا می‌توانید منطق ارسال نوتیفیکیشن واقعی (ایمیل، پیامک و...) را اضافه کنید.
+            
         }
     } catch (err) {
         console.error('خطا در بررسی موجودی کم:', err);
